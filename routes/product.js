@@ -1,40 +1,27 @@
 import { Router } from "express";
+import { creatPost, listPost, readPost, removePost, updatePost } from "../controller/posts";
+import { creat, list, read, remove, update } from "../controller/products";
+import { check } from "../midlewares/checkauth";
+// 
 
 const router = Router();
-const check = (req , res ,next) => {
-    const status = true;
-    if(status){
-        next();
-    }
-    else{
-        console.log("không có quyền truy cập")
-    }
-}
-router.get('/api/products', check, (req, res)=>{
-    const products = [
-        {id:1, name:"product A"},
-        {id:2, name:"product B"},
-    ]
-    res.json(products);
-});
+// products
+router.get('/products', check,list );
 
-router.post('/api/products', check, (req, res)=>{
-    console.log(req.body)
-    const products = [
-        {id:1, name:"product A"},
-        {id:2, name:"product B"},
-    ]
-    product.push(req.body)
-    res.json(products);
-});
+router.get('/product/:id', check, read );
 
-router.delete('/product/:id', check, (req, res) => {
-    const products = [
-        {id: 1, name: "Product A"},
-        {id: 2, name: "Product B"}
-    ];
-    res.json(products.filter(item => item.id !== +req.params.id));
-});
+router.post('/products', check, creat);
+
+router.delete('/product/:id', check, remove );
+
+router.patch('product/:id', check, update )
+// posts
+router.get('/posts', check, listPost );
+router.get('/post/:id',check , readPost);
+router.post('/posts',check , creatPost);
+router.delete('/post/:id', check , removePost);
+router.patch('/post/:id', check , updatePost)
+
 
 export default router;
 
