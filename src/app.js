@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import cors from 'cors'
 import mongoose from 'mongoose';
 import productRoute from '../routes/product.js'
+import categoryRoute from '../routes/category.js'
+
 const app = express();
 
 // middleware
@@ -12,6 +14,7 @@ app.use(express.json())
 
 // route
 app.use("/api",productRoute);
+app.use("/api",categoryRoute)
 
 // connect database
 mongoose.connect('mongodb://localhost:27017/web503')
