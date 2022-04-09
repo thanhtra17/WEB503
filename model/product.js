@@ -3,8 +3,7 @@ import mongoose, { Schema , ObjectId } from "mongoose";
  const productSchema = new Schema({
      name:{
          type:String,
-         minlength:5,
-         maxlength:true
+         require:true
      },
      price:{
          type:Number,

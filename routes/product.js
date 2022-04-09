@@ -6,15 +6,15 @@ import { check } from "../midlewares/checkauth";
 
 const router = Router();
 // products
-router.get('/products', check,list );
+router.get("/products", check,list );
 
-router.get('/product/:id', check, read );
+router.get("/products/:id", check, read );
 
-router.post('/products', check, creat);
+router.post("/products", check, creat);
 
-router.delete('/product/:id', check, remove );
+router.delete("/products/:id", check, remove );
 
-router.patch('product/:id', check, update )
+router.patch("/products/:id", check, update )
 // posts
 router.get('/posts', check, listPost );
 router.get('/post/:id',check , readPost);
